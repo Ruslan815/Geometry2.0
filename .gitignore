@@ -3,4 +3,5 @@
 .*.swp
 *.c~
 geometry
+geometry_test
 #*.c#
