@@ -2,7 +2,7 @@
 CC = gcc
 CFLAGS= -Wall -Werror
 EXECUTABLE = geometry
-all: bin/$(EXECUTABLE) bin/geometry_test
+all: bin/$(EXECUTABLE)
 
 bin/$(EXECUTABLE):build/my_prog.o build/perimetr.o build/square.o build/peres.o
 	$(CC) $(CFLAGS) build/my_prog.o build/perimetr.o build/square.o build/peres.o -lm -o bin/$(EXECUTABLE)
@@ -16,7 +16,9 @@ build/square.o: src/square.c
 	$(CC) $(CFLAGS) src/square.c -o build/square.o -c -lm 
 
 build/peres.o: src/peres.c
-	$(CC) $(CFLAGS) src/peres.c -o build/peres.o -c -lm 
+	$(CC) $(CFLAGS) src/peres.c -o build/peres.o -c -lm
+	
+test: bin/geometry_test
 
 bin/geometry_test: build/test/main.o build/test/square.o build/test/perimetr.o build/test/peres.o
 	$(CC) $(CFLAGS) build/test/main.o build/test/square.o build/test/perimetr.o build/test/peres.o -o bin/geometry_test -lm
