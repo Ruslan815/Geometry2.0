@@ -22,18 +22,14 @@ test: bin/geometry_test
 
 bin/geometry_test: build/test/main.o build/test/square.o build/test/perimetr.o build/test/peres.o
 	$(CC) $(CFLAGS) build/test/main.o build/test/square.o build/test/perimetr.o build/test/peres.o -o bin/geometry_test -lm
-	
 build/test/main.o: test/main.c
 	$(CC) $(CFLAGS) -c -I thirdparty -I src test/main.c -o build/test/main.o
 
-build/test/square.o: src/square.c src/foo.h
+build/test/square.o: src/square.o src/foo.h
 	$(CC) $(CFLAGS) -c -I thirdparty -I src src/square.c -o build/test/square.o
-	
-build/test/perimetr.o: src/perimetr.c src/foo.h
+build/test/perimetr.o: src/perimetr.o src/foo.h
 	$(CC) $(CFLAGS) -c -I thirdparty -I src src/perimetr.c -o build/test/perimetr.o
-	
-build/test/peres.o: src/peres.c src/foo.h
-	$(CC) $(CFLAGS) -c -I thirdparty -I src src/peres.c -o build/test/peres.o
-
+build/test/peres.o: src/peres.o src/foo.h
+$(CC) $(CFLAGS) -c -I thirdparty -I src src/peres.c -o build/test/peres.o
 clean:
 	rm -rf build/*.o bin/geometry bin/geometry_test
